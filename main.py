@@ -23,9 +23,9 @@ class MyPlugin(Star):
             now = datetime.now()
             fromtime=now - timedelta(hour=8)
             params = {
-                "pv": "nth(SRing:VA84VGC01.PRE1,1000)",  # 输入百度搜索的内容
-                "from":fromtime.strftime("%Y-%m-%d %H:%M:%S"),
-                "to":now.strftime("%Y-%m-%d %H:%M:%S")
+                "pv": "SRing:VA84VGC01.PRE1",  # 输入百度搜索的内容
+                "from":fromtime.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+                "to":now.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
             }
             response = await client.get("http://100.67.254.31:8080/retrieval/data/getData.json", params=params)
             response.encoding = response.charset_encoding
