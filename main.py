@@ -2,7 +2,7 @@ from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
 from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 import httpx
-import datetime
+from datetime import datetime, timedelta
 @register("helloworld", "YourName", "一个简单的 Hello World 插件", "1.0.0")
 class MyPlugin(Star):
     def __init__(self, context: Context):
@@ -21,7 +21,7 @@ class MyPlugin(Star):
         logger.info(message_chain)      
         async with httpx.AsyncClient() as client:
             now = datetime.now()
-            fromtime=now - datetime.timedelta(hour=8)
+            fromtime=now - timedelta(hour=8)
             params = {
                 "pv": "nth(SRing:VA84VGC01.PRE1,1000)",  # 输入百度搜索的内容
                 "from":fromtime.strftime("%Y-%m-%d %H:%M:%S"),
