@@ -21,7 +21,7 @@ class MyPlugin(Star):
         logger.info(message_chain)      
         async with httpx.AsyncClient() as client:
             now = datetime.now()
-            fromtime=now - timedelta(hour=8)
+            fromtime=now - timedelta(hours=8)
             params = {
                 "pv": "SRing:VA84VGC01.PRE1",  # 输入百度搜索的内容
                 "from":fromtime.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
